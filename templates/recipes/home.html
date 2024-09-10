@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookPot - Find Recipes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .collapse {
+            transition: height 0.35s ease;
+        }
+        .card-header {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">CookPot</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about/">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Find Recipes Based on Ingredients</h2>
+
+        <form method="POST" action="{% url 'results' %}">
+            {% csrf_token %}
+
+            <!-- Ingredients Collapsible Section -->
+            <div class="form-group">
+                <h4 class="card-header" data-toggle="collapse" data-target="#ingredientsCollapse" aria-expanded="true" aria-controls="ingredientsCollapse">
+                    Available Ingredients
+                </h4>
+                <div class="collapse show" id="ingredientsCollapse">
+                    <div class="card card-body mt-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chicken" name="ingredients" value="chicken">
+                            <label class="form-check-label" for="chicken">Chicken</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="fish" name="ingredients" value="fish">
+                            <label class="form-check-label" for="fish">Fish</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="potato" name="ingredients" value="potato">
+                            <label class="form-check-label" for="potato">Potato</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="bread" name="ingredients" value="bread">
+                            <label class="form-check-label" for="bread">Bread</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cheese" name="ingredients" value="cheese">
+                            <label class="form-check-label" for="cheese">Cheese</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="butter" name="ingredients" value="butter">
+                            <label class="form-check-label" for="butter">Butter</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="egg" name="ingredients" value="egg">
+                            <label class="form-check-label" for="egg">Egg</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="tomato" name="ingredients" value="tomato">
+                            <label class="form-check-label" for="tomato">Tomato</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="onion" name="ingredients" value="onion">
+                            <label class="form-check-label" for="onion">Onion</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="spinach" name="ingredients" value="spinach">
+                            <label class="form-check-label" for="spinach">Spinach</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="mushroom" name="ingredients" value="mushroom">
+                            <label class="form-check-label" for="mushroom">Mushroom</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="carrot" name="ingredients" value="carrot">
+                            <label class="form-check-label" for="carrot">Carrot</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="broccoli" name="ingredients" value="broccoli">
+                            <label class="form-check-label" for="broccoli">Broccoli</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="garlic" name="ingredients" value="garlic">
+                            <label class="form-check-label" for="garlic">Garlic</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cucumber" name="ingredients" value="cucumber">
+                            <label class="form-check-label" for="cucumber">Cucumber</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="bell_pepper" name="ingredients" value="bell_pepper">
+                            <label class="form-check-label" for="bell_pepper">Bell Pepper</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="zucchini" name="ingredients" value="zucchini">
+                            <label class="form-check-label" for="zucchini">Zucchini</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rice" name="ingredients" value="rice">
+                            <label class="form-check-label" for="rice">Rice</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pasta" name="ingredients" value="pasta">
+                            <label class="form-check-label" for="pasta">Pasta</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="yogurt" name="ingredients" value="yogurt">
+                            <label class="form-check-label" for="yogurt">Yogurt</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="avocado" name="ingredients" value="avocado">
+                            <label class="form-check-label" for="avocado">Avocado</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cilantro" name="ingredients" value="cilantro">
+                            <label class="form-check-label" for="cilantro">Cilantro</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="basil" name="ingredients" value="basil">
+                            <label class="form-check-label" for="basil">Basil</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chili" name="ingredients" value="chili">
+                            <label class="form-check-label" for="chili">Chili</label>
+                        </div>                        
+                        <!-- Add more ingredients as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Allergies Collapsible Section -->
+            <div class="form-group">
+                <h4 class="card-header" data-toggle="collapse" data-target="#allergiesCollapse" aria-expanded="true" aria-controls="allergiesCollapse">
+                    Allergies
+                </h4>
+                <div class="collapse show" id="allergiesCollapse">
+                    <div class="card card-body mt-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gluten" name="allergies" value="gluten">
+                            <label class="form-check-label" for="gluten">Gluten</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="peanut" name="allergies" value="peanut">
+                            <label class="form-check-label" for="peanut">Peanut</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="lactose" name="allergies" value="lactose">
+                            <label class="form-check-label" for="lactose">Lactose</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="soy" name="allergies" value="soy">
+                            <label class="form-check-label" for="soy">Soy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="egg" name="allergies" value="egg">
+                            <label class="form-check-label" for="egg">Egg</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="fish" name="allergies" value="fish">
+                            <label class="form-check-label" for="fish">Fish</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="tree_nuts" name="allergies" value="tree_nuts">
+                            <label class="form-check-label" for="tree_nuts">Tree Nuts</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="wheat" name="allergies" value="wheat">
+                            <label class="form-check-label" for="wheat">Wheat</label>
+                        </div>
+                        <!-- Add more allergies as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meal Type Collapsible Section -->
+            <div class="form-group">
+                <h4 class="card-header" data-toggle="collapse" data-target="#mealTypeCollapse" aria-expanded="true" aria-controls="mealTypeCollapse">
+                    Meal Type
+                </h4>
+                <div class="collapse show" id="mealTypeCollapse">
+                    <div class="card card-body mt-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="breakfast" name="meal_type" value="breakfast">
+                            <label class="form-check-label" for="breakfast">Breakfast</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="lunch" name="meal_type" value="lunch">
+                            <label class="form-check-label" for="lunch">Lunch</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="dinner" name="meal_type" value="dinner">
+                            <label class="form-check-label" for="dinner">Dinner</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="snack" name="meal_type" value="snack">
+                            <label class="form-check-label" for="snack">Snack</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="dessert" name="meal_type" value="dessert">
+                            <label class="form-check-label" for="dessert">Dessert</label>
+                        </div>
+                        <!-- Add more meal types as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Find Recipes</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

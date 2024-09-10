@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.title }} - CookPot Recipe</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">CookPot</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <h1 class="mb-4">{{ recipe.title }}</h1>
+        
+        <div class="card">
+            <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.title }}">
+            <div class="card-body">
+                <h5 class="card-title">Recipe Summary</h5>
+                <p class="card-text">{{ recipe.summary|safe }}</p>
+                
+                <h5 class="mt-4">Ingredients</h5>
+                <ul>
+                    {% for ingredient in recipe.extendedIngredients %}
+                        <li>{{ ingredient.original }}</li>
+                    {% endfor %}
+                </ul>
+                
+                <h5 class="mt-4">Instructions</h5>
+                <p>{{ recipe.instructions|safe }}</p>
+            </div>
+        </div>
+        
+        <a href="{{ recipe.sourceUrl }}" class="btn btn-primary mt-4" target="_blank">View Full Recipe on Spoonacular</a>
+    </div>
+</body>
+</html>
